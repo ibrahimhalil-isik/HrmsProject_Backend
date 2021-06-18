@@ -8,17 +8,18 @@ import kodlamaio.hrms.mernisService.FakeMernisService;
 public class MernisServiceAdapter implements ValidationService {
 
 	@Override
-	public boolean validateByMernis(String identityNumber, String firstName, String lastName, int birthYear) {
+	public boolean validateByMernis(long nationalId, String firstName, String lastName, int yearOfBirth) {
 
-		FakeMernisService fakeMernisService = new FakeMernisService();
+		FakeMernisService client = new FakeMernisService();
 		
 		boolean result = true;
 		try {
-			result = fakeMernisService.ValidateByPersonalInfo(identityNumber, firstName, lastName, birthYear);
+			result = client.ValidateByPersonalInfo(nationalId, firstName, lastName, yearOfBirth);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 		
 	}
+
 }
