@@ -14,6 +14,7 @@ import kodlamaio.hrms.business.abstracts.JobseekerService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Jobseeker;
+import kodlamaio.hrms.entities.dtos.JobSeekerCVDto;
 
 @RestController
 @RequestMapping("/api/jobseekers")
@@ -51,6 +52,10 @@ public class JobseekersController {
 	public DataResult<List<Jobseeker>> getAll(){
 		return this.jobseekerService.getAll();
 	}
-
+	
+	@GetMapping("/getJobseekerCVById")
+	public DataResult<JobSeekerCVDto> getJobseekerCVById(@RequestParam int id){
+		return this.jobseekerService.getJobseekerCVById(id);
+	}
 	
 }
